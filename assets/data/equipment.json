@@ -1,0 +1,94 @@
+[
+  {
+    "id": "basic_helmet",
+    "name": "Basic Helmet",
+    "description": "Standard safety helmet for cycling.",
+    "slot": "helmet",
+    "effects": {
+      "safety": 10
+    },
+    "price": 0,
+    "unlocked": true
+  },
+  {
+    "id": "aero_helmet",
+    "name": "Aero Helmet",
+    "description": "Aerodynamic helmet that reduces wind resistance.",
+    "slot": "helmet",
+    "effects": {
+      "safety": 10,
+      "speed": 5
+    },
+    "price": 150,
+    "unlocked": false
+  },
+  {
+    "id": "casual_outfit",
+    "name": "Casual Outfit",
+    "description": "Comfortable clothing for everyday cycling.",
+    "slot": "clothing",
+    "effects": {
+      "comfort": 5
+    },
+    "price": 0,
+    "unlocked": true
+  },
+  {
+    "id": "cycling_jersey",
+    "name": "Cycling Jersey",
+    "description": "Professional cycling outfit with moisture-wicking fabric.",
+    "slot": "clothing",
+    "effects": {
+      "comfort": 10,
+      "stamina": 10
+    },
+    "price": 200,
+    "unlocked": false
+  },
+  {
+    "id": "regular_shoes",
+    "name": "Regular Shoes",
+    "description": "Basic shoes suitable for cycling.",
+    "slot": "shoes",
+    "effects": {
+      "comfort": 5
+    },
+    "price": 0,
+    "unlocked": true
+  },
+  {
+    "id": "clipless_shoes",
+    "name": "Clipless Shoes",
+    "description": "Professional cycling shoes for better power transfer.",
+    "slot": "shoes",
+    "effects": {
+      "speed": 8,
+      "handling": 5
+    },
+    "price": 180,
+    "unlocked": false
+  },
+  {
+    "id": "water_bottle",
+    "name": "Water Bottle",
+    "description": "Essential hydration for longer rides.",
+    "slot": "accessory",
+    "effects": {
+      "stamina": 15
+    },
+    "price": 0,
+    "unlocked": true
+  },
+  {
+    "id": "cycling_gloves",
+    "name": "Cycling Gloves",
+    "description": "Padded gloves for better grip and comfort.",
+    "slot": "accessory",
+    "effects": {
+      "comfort": 8,
+      "handling": 5
+    },
+    "price": 100,
+    "unlocked": false
+  }
+]

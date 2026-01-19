@@ -1,0 +1,58 @@
+[
+  {
+    "id": "city_loop",
+    "name": "City Loop",
+    "description": "A gentle ride through the city streets with beautiful urban scenery.",
+    "distance": 15,
+    "difficulty": "easy",
+    "terrain": "paved",
+    "scenery": "urban",
+    "duration": 45,
+    "rewards": {
+      "experience": 50,
+      "coins": 20
+    }
+  },
+  {
+    "id": "riverside_path",
+    "name": "Riverside Path",
+    "description": "A peaceful route along the river with scenic views and fresh air.",
+    "distance": 25,
+    "difficulty": "easy",
+    "terrain": "paved",
+    "scenery": "nature",
+    "duration": 75,
+    "rewards": {
+      "experience": 80,
+      "coins": 35
+    }
+  },
+  {
+    "id": "mountain_trail",
+    "name": "Mountain Trail",
+    "description": "A challenging climb through mountain terrain with breathtaking views.",
+    "distance": 30,
+    "difficulty": "hard",
+    "terrain": "gravel",
+    "scenery": "mountain",
+    "duration": 120,
+    "rewards": {
+      "experience": 150,
+      "coins": 75
+    }
+  },
+  {
+    "id": "coastal_road",
+    "name": "Coastal Road",
+    "description": "Ride along the coast with ocean breezes and stunning seaside views.",
+    "distance": 35,
+    "difficulty": "medium",
+    "terrain": "paved",
+    "scenery": "coastal",
+    "duration": 90,
+    "rewards": {
+      "experience": 120,
+      "coins": 50
+    }
+  }
+]

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cycling Adventure</title>
+  <link rel="stylesheet" href="src/ui/styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Header with player stats -->
+    <header id="game-header">
+      <div class="player-info">
+        <h1>Cycling Adventure</h1>
+        <div class="stats">
+          <span class="stat">Level: <strong id="player-level">1</strong></span>
+          <span class="stat">XP: <strong id="player-exp">0</strong></span>
+          <span class="stat">Coins: <strong id="player-coins">100</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main game area -->
+    <main id="game-main">
+      <!-- Main Menu Screen -->
+      <div id="screen-menu" class="screen active">
+        <div class="menu-content">
+          <h2>Welcome, Cyclist!</h2>
+          <p>Ready for your next cycling adventure?</p>
+          <div class="menu-buttons">
+            <button class="btn btn-primary" onclick="game.changeGameState('route-select')">Start Adventure</button>
+            <button class="btn btn-secondary" onclick="game.changeGameState('bike-select')">View Bicycles</button>
+            <button class="btn btn-secondary" onclick="game.changeGameState('equipment-select')">Manage Equipment</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Route Selection Screen -->
+      <div id="screen-route-select" class="screen">
+        <div class="screen-header">
+          <h2>Choose Your Route</h2>
+          <button class="btn btn-back" onclick="game.changeGameState('menu')">Back</button>
+        </div>
+        <div id="routes-list" class="grid-container"></div>
+      </div>
+
+      <!-- Bicycle Selection Screen -->
+      <div id="screen-bike-select" class="screen">
+        <div class="screen-header">
+          <h2>Your Bicycles</h2>
+          <button class="btn btn-back" onclick="game.changeGameState('menu')">Back</button>
+        </div>
+        <div class="current-selection">
+          <p>Current Bicycle: <strong id="current-bike">City Cruiser</strong></p>
+        </div>
+        <div id="bicycles-list" class="grid-container"></div>
+      </div>
+
+      <!-- Equipment Selection Screen -->
+      <div id="screen-equipment-select" class="screen">
+        <div class="screen-header">
+          <h2>Equipment & Gear</h2>
+          <button class="btn btn-back" onclick="game.changeGameState('menu')">Back</button>
+        </div>
+        <div class="equipment-slots">
+          <div class="slot">
+            <label>Helmet:</label>
+            <span id="equipped-helmet">Basic Helmet</span>
+          </div>
+          <div class="slot">
+            <label>Clothing:</label>
+            <span id="equipped-clothing">Casual Outfit</span>
+          </div>
+          <div class="slot">
+            <label>Shoes:</label>
+            <span id="equipped-shoes">Regular Shoes</span>
+          </div>
+          <div class="slot">
+            <label>Accessory:</label>
+            <span id="equipped-accessory">Water Bottle</span>
+          </div>
+        </div>
+        <div id="equipment-list" class="grid-container"></div>
+      </div>
+
+      <!-- Trip Screen -->
+      <div id="screen-trip" class="screen">
+        <div class="trip-container">
+          <h2 id="trip-route-name">Your Journey</h2>
+          <div class="trip-stats">
+            <div class="stat-bar">
+              <label>Progress</label>
+              <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+                <span id="progress-text" class="progress-text">0%</span>
+              </div>
+            </div>
+            <div class="stat-bar">
+              <label>Stamina</label>
+              <div class="progress-bar stamina">
+                <div id="stamina-fill" class="progress-fill"></div>
+                <span id="stamina-text" class="progress-text">100%</span>
+              </div>
+            </div>
+          </div>
+          <div id="trip-events" class="trip-events"></div>
+          <div class="trip-scenery">
+            <p id="trip-description"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Screen -->
+      <div id="screen-results" class="screen">
+        <div class="results-container">
+          <h2>Trip Complete!</h2>
+          <div class="results-content">
+            <p class="results-message">Great ride! You completed the journey.</p>
+            <div class="rewards">
+              <h3>Rewards</h3>
+              <div class="reward-item">
+                <span>Experience:</span>
+                <strong id="reward-exp">0 XP</strong>
+              </div>
+              <div class="reward-item">
+                <span>Coins:</span>
+                <strong id="reward-coins">0</strong>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="game.changeGameState('menu')">Continue</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="src/game/game.js"></script>
+  <script src="src/ui/ui.js"></script>
+</body>
+</html>

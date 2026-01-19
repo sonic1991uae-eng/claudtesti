@@ -1,0 +1,58 @@
+[
+  {
+    "id": "city_cruiser",
+    "name": "City Cruiser",
+    "description": "Comfortable bike perfect for casual city rides.",
+    "type": "city",
+    "stats": {
+      "speed": 60,
+      "handling": 70,
+      "durability": 80,
+      "comfort": 90
+    },
+    "price": 0,
+    "unlocked": true
+  },
+  {
+    "id": "road_racer",
+    "name": "Road Racer",
+    "description": "Lightweight and fast, ideal for paved roads and speed.",
+    "type": "road",
+    "stats": {
+      "speed": 95,
+      "handling": 75,
+      "durability": 60,
+      "comfort": 50
+    },
+    "price": 500,
+    "unlocked": false
+  },
+  {
+    "id": "mountain_bike",
+    "name": "Mountain Bike",
+    "description": "Rugged bike built for tough terrain and trails.",
+    "type": "mountain",
+    "stats": {
+      "speed": 65,
+      "handling": 85,
+      "durability": 95,
+      "comfort": 70
+    },
+    "price": 600,
+    "unlocked": false
+  },
+  {
+    "id": "hybrid_explorer",
+    "name": "Hybrid Explorer",
+    "description": "Versatile bike that performs well on any terrain.",
+    "type": "hybrid",
+    "stats": {
+      "speed": 75,
+      "handling": 80,
+      "durability": 75,
+      "comfort": 75
+    },
+    "price": 750,
+    "unlocked": false
+  }
+]
