@@ -1,5 +1,34 @@
 // UI Controller for Cycling Adventure Game
 
+// Visual icon mappings
+const ROUTE_ICONS = {
+  'city_loop': '🏙️',
+  'riverside_path': '🌊',
+  'mountain_trail': '⛰️',
+  'coastal_road': '🏖️'
+};
+
+const SCENERY_ICONS = {
+  'urban': '🏙️',
+  'nature': '🌳',
+  'mountain': '⛰️',
+  'coastal': '🌊'
+};
+
+const BICYCLE_ICONS = {
+  'city': '🚲',
+  'road': '🚴',
+  'mountain': '🚵',
+  'hybrid': '🚴‍♀️'
+};
+
+const EQUIPMENT_ICONS = {
+  'helmet': '⛑️',
+  'clothing': '👕',
+  'shoes': '👟',
+  'accessory': '🎒'
+};
+
 window.updateUI = function(game) {
   updatePlayerStats(game);
   updateScreens(game);
@@ -52,29 +81,37 @@ function renderRoutes(game) {
   game.routes.forEach(route => {
     const card = document.createElement('div');
     card.className = 'card route-card';
+    const routeIcon = ROUTE_ICONS[route.id] || '🗺️';
+    const sceneryIcon = SCENERY_ICONS[route.scenery] || '🌄';
+
     card.innerHTML = `
+      <div class="card-icon">${routeIcon}</div>
       <h3>${route.name}</h3>
       <p class="description">${route.description}</p>
       <div class="card-stats">
         <div class="stat-item">
-          <span>Distance:</span>
+          <span>📏 Distance:</span>
           <strong>${route.distance} km</strong>
         </div>
         <div class="stat-item">
-          <span>Difficulty:</span>
+          <span>⚡ Difficulty:</span>
           <strong class="difficulty-${route.difficulty}">${route.difficulty.toUpperCase()}</strong>
         </div>
         <div class="stat-item">
-          <span>Terrain:</span>
+          <span>🛣️ Terrain:</span>
           <strong>${route.terrain}</strong>
         </div>
         <div class="stat-item">
-          <span>Duration:</span>
+          <span>⏱️ Duration:</span>
           <strong>${route.duration} min</strong>
+        </div>
+        <div class="stat-item">
+          <span>${sceneryIcon} Scenery:</span>
+          <strong>${route.scenery}</strong>
         </div>
       </div>
       <div class="card-rewards">
-        <span>Rewards: ${route.rewards.experience} XP, ${route.rewards.coins} Coins</span>
+        <span>🎁 Rewards: ${route.rewards.experience} XP, ${route.rewards.coins} Coins</span>
       </div>
       <button class="btn btn-primary" onclick="selectAndStartRoute('${route.id}')">
         Select Route
@@ -97,6 +134,7 @@ function renderBicycles(game) {
   game.bicycles.forEach(bicycle => {
     const card = document.createElement('div');
     card.className = `card bicycle-card ${!bicycle.unlocked ? 'locked' : ''} ${bicycle.id === game.selectedBicycle?.id ? 'selected' : ''}`;
+    const bikeIcon = BICYCLE_ICONS[bicycle.type] || '🚲';
 
     const statsHTML = Object.entries(bicycle.stats)
       .map(([key, value]) => `
@@ -110,15 +148,16 @@ function renderBicycles(game) {
       `).join('');
 
     card.innerHTML = `
+      <div class="card-icon bicycle-icon">${bikeIcon}</div>
       <h3>${bicycle.name}</h3>
       <p class="description">${bicycle.description}</p>
       <div class="bike-stats">
         ${statsHTML}
       </div>
-      ${!bicycle.unlocked ? `<p class="price">Price: ${bicycle.price} Coins</p>` : ''}
+      ${!bicycle.unlocked ? `<p class="price">🪙 Price: ${bicycle.price} Coins</p>` : ''}
       ${bicycle.unlocked ?
         `<button class="btn btn-primary" onclick="selectBicycle('${bicycle.id}')">Select</button>` :
-        `<button class="btn btn-secondary" onclick="purchaseBicycle('${bicycle.id}')">Purchase</button>`
+        `<button class="btn btn-secondary" onclick="purchaseBicycle('${bicycle.id}')">💰 Purchase</button>`
       }
     `;
     container.appendChild(card);
@@ -149,7 +188,8 @@ function renderEquipment(game) {
   Object.entries(groupedEquipment).forEach(([slot, items]) => {
     const section = document.createElement('div');
     section.className = 'equipment-section';
-    section.innerHTML = `<h3>${slot.charAt(0).toUpperCase() + slot.slice(1)}</h3>`;
+    const slotIcon = EQUIPMENT_ICONS[slot] || '📦';
+    section.innerHTML = `<h3>${slotIcon} ${slot.charAt(0).toUpperCase() + slot.slice(1)}</h3>`;
 
     items.forEach(item => {
       const isEquipped = game.equippedItems[slot]?.id === item.id;
@@ -157,19 +197,19 @@ function renderEquipment(game) {
       card.className = `card equipment-card ${!item.unlocked ? 'locked' : ''} ${isEquipped ? 'equipped' : ''}`;
 
       const effectsHTML = Object.entries(item.effects || {})
-        .map(([key, value]) => `<span class="effect">+${value} ${key}</span>`)
+        .map(([key, value]) => `<span class="effect">✨ +${value} ${key}</span>`)
         .join('');
 
       card.innerHTML = `
         <h4>${item.name}</h4>
         <p class="description">${item.description}</p>
         <div class="effects">${effectsHTML}</div>
-        ${!item.unlocked ? `<p class="price">Price: ${item.price} Coins</p>` : ''}
-        ${isEquipped ? '<span class="equipped-badge">Equipped</span>' : ''}
+        ${!item.unlocked ? `<p class="price">🪙 Price: ${item.price} Coins</p>` : ''}
+        ${isEquipped ? '<span class="equipped-badge">✓ Equipped</span>' : ''}
         ${item.unlocked && !isEquipped ?
           `<button class="btn btn-primary btn-small" onclick="equipItem('${item.id}')">Equip</button>` :
           !item.unlocked ?
-          `<button class="btn btn-secondary btn-small" onclick="purchaseEquipment('${item.id}')">Purchase</button>` : ''
+          `<button class="btn btn-secondary btn-small" onclick="purchaseEquipment('${item.id}')">💰 Purchase</button>` : ''
         }
       `;
       section.appendChild(card);
@@ -187,10 +227,16 @@ function renderTrip(game) {
   const staminaTextEl = document.getElementById('stamina-text');
   const tripDescEl = document.getElementById('trip-description');
   const eventsEl = document.getElementById('trip-events');
+  const sceneryBg = document.getElementById('scenery-background');
 
   if (game.selectedRoute) {
     routeNameEl.textContent = game.selectedRoute.name;
     tripDescEl.textContent = game.selectedRoute.description;
+
+    // Set scenery background based on route scenery
+    if (sceneryBg) {
+      sceneryBg.className = `scenery-background scenery-${game.selectedRoute.scenery}`;
+    }
   }
 
   const progress = Math.min(100, Math.max(0, game.tripProgress));
@@ -201,11 +247,20 @@ function renderTrip(game) {
   staminaFillEl.style.width = `${staminaPercent}%`;
   staminaTextEl.textContent = `${Math.floor(staminaPercent)}%`;
 
-  // Show triggered events
+  // Show triggered events with icons
+  const eventIcons = {
+    'scenic': '🌄',
+    'challenge': '⛰️',
+    'rest': '☕',
+    'weather': '🌤️',
+    'obstacle': '⚠️'
+  };
+
   const triggeredEvents = game.tripEvents.filter(e => e.triggered);
   if (triggeredEvents.length > 0) {
     const latestEvent = triggeredEvents[triggeredEvents.length - 1];
-    eventsEl.innerHTML = `<div class="event-message ${latestEvent.type}">${latestEvent.text}</div>`;
+    const icon = eventIcons[latestEvent.type] || '📍';
+    eventsEl.innerHTML = `<div class="event-message ${latestEvent.type}">${icon} ${latestEvent.text}</div>`;
   }
 }
 

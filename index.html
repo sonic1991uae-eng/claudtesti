@@ -25,12 +25,13 @@
       <!-- Main Menu Screen -->
       <div id="screen-menu" class="screen active">
         <div class="menu-content">
+          <div class="cyclist-hero">🚴‍♀️</div>
           <h2>Welcome, Cyclist!</h2>
           <p>Ready for your next cycling adventure?</p>
           <div class="menu-buttons">
-            <button class="btn btn-primary" onclick="game.changeGameState('route-select')">Start Adventure</button>
-            <button class="btn btn-secondary" onclick="game.changeGameState('bike-select')">View Bicycles</button>
-            <button class="btn btn-secondary" onclick="game.changeGameState('equipment-select')">Manage Equipment</button>
+            <button class="btn btn-primary" onclick="game.changeGameState('route-select')">🗺️ Start Adventure</button>
+            <button class="btn btn-secondary" onclick="game.changeGameState('bike-select')">🚲 View Bicycles</button>
+            <button class="btn btn-secondary" onclick="game.changeGameState('equipment-select')">🎽 Manage Equipment</button>
           </div>
         </div>
       </div>
@@ -86,7 +87,12 @@
       <!-- Trip Screen -->
       <div id="screen-trip" class="screen">
         <div class="trip-container">
+          <div id="scenery-background" class="scenery-background"></div>
           <h2 id="trip-route-name">Your Journey</h2>
+          <div class="cycling-animation">
+            <div class="animated-cyclist">🚴‍♀️</div>
+            <div class="road-lines"></div>
+          </div>
           <div class="trip-stats">
             <div class="stat-bar">
               <label>Progress</label>
@@ -113,17 +119,18 @@
       <!-- Results Screen -->
       <div id="screen-results" class="screen">
         <div class="results-container">
+          <div class="celebration">🎉</div>
           <h2>Trip Complete!</h2>
           <div class="results-content">
-            <p class="results-message">Great ride! You completed the journey.</p>
+            <p class="results-message">🏆 Great ride! You completed the journey.</p>
             <div class="rewards">
               <h3>Rewards</h3>
               <div class="reward-item">
-                <span>Experience:</span>
+                <span>✨ Experience:</span>
                 <strong id="reward-exp">0 XP</strong>
               </div>
               <div class="reward-item">
-                <span>Coins:</span>
+                <span>🪙 Coins:</span>
                 <strong id="reward-coins">0</strong>
               </div>
             </div>

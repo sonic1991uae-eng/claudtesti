@@ -99,6 +99,22 @@ body {
   padding: 40px 20px;
 }
 
+.cyclist-hero {
+  font-size: 120px;
+  margin-bottom: 20px;
+  animation: bounce 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
 .menu-content h2 {
   font-size: 32px;
   color: #333;
@@ -180,11 +196,33 @@ body {
   border-radius: 12px;
   padding: 20px;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .card:hover {
   border-color: #667eea;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.bicycle-icon {
+  font-size: 56px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .card h3 {
@@ -364,6 +402,82 @@ body {
 .trip-container {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+}
+
+.scenery-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  border-radius: 12px;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scenery-urban {
+  background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
+}
+
+.scenery-nature {
+  background: linear-gradient(135deg, #22c55e 0%, #86efac 100%);
+}
+
+.scenery-mountain {
+  background: linear-gradient(135deg, #78716c 0%, #d6d3d1 100%);
+}
+
+.scenery-coastal {
+  background: linear-gradient(135deg, #0ea5e9 0%, #7dd3fc 100%);
+}
+
+.cycling-animation {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+  height: 80px;
+}
+
+.animated-cyclist {
+  font-size: 64px;
+  display: inline-block;
+  animation: cycle 2s ease-in-out infinite;
+}
+
+@keyframes cycle {
+  0%, 100% {
+    transform: translateX(-10px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(2deg);
+  }
+}
+
+.road-lines {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e5e7eb 0px,
+    #e5e7eb 20px,
+    transparent 20px,
+    transparent 40px
+  );
+  animation: roadScroll 1s linear infinite;
+}
+
+@keyframes roadScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
 }
 
 .trip-container h2 {
@@ -371,6 +485,8 @@ body {
   font-size: 28px;
   margin-bottom: 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .trip-stats {
@@ -478,10 +594,29 @@ body {
   padding: 40px 20px;
 }
 
+.celebration {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: celebrate 1s ease-in-out;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
 .results-container h2 {
   color: #333;
   font-size: 32px;
   margin-bottom: 20px;
+  animation: fadeIn 0.8s ease-in;
 }
 
 .results-message {
